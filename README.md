@@ -35,8 +35,8 @@ Spring Boot、Shiro、MyBatis-Plus、Druid、Redis、MySQL、thymeleaf<br/>
 #### 使用说明
 
 1. 使用IDE导入本项目
-2. 新建数据库`CREATE DATABASE pb-cms-base;`
-3. 导入数据库,数据库文件目录:`docs/db/pb-cms.sql`
+2. 新建数据库`CREATE DATABASE pb_cms_base;`
+3. 导入数据库,数据库文件目录:`docs/db/pb_cms_base.sql`
 4. 修改(`resources/application.yml`)配置文件
    1. 修改数据库链接相关连接串、用户名和密码(可搜索`datasource`)
    2. redis配置(可搜索`redis`)
