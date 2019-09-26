@@ -30,6 +30,8 @@ public class ShiroService {
 
     private final PermissionService permissionService;
 
+    private final ShiroFilterFactoryBean shiroFilterFactoryBean;
+
     @PostConstruct
     public void init() {
         updatePermission();
@@ -68,7 +70,6 @@ public class ShiroService {
      * 重新加载权限
      */
     public void updatePermission() {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = SpringContextHolder.getBean(ShiroFilterFactoryBean.class);
         synchronized (shiroFilterFactoryBean) {
 
             AbstractShiroFilter shiroFilter = null;
