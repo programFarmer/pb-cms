@@ -1,0 +1,113 @@
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <!--<li><a href="#">line1</a></li>-->
+        <li class="active">工作台</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content connectedSortable">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>150</h3>
+
+                    <p>新订单</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                    <p>跳出率</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>44</h3>
+
+                    <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>65</h3>
+
+                    <p>访客</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+
+
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">pb-blog</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div style="padding: 10px 0 20px 10px;">
+                <h3>&nbsp;&nbsp;&nbsp;项目介绍</h3>
+                <ul>
+                    <li>轻量级博客系统</li>
+                    <li>框架选型：springboot,mybatis-plus,redis,shiro,thymeleaf.</li>
+                    <li>前端采用adminlte模板，封装了core.js方便使用</li>
+                    <li>轻量级精简博客系统，完美自适应。即使是手机，发文字，看博客，丝毫没有问题。</li>
+                </ul>
+
+                <h3>&nbsp;&nbsp;&nbsp;获取帮助</h3>
+                <ul>
+                    <li>Git地址：<a href="https://gitee.com/LinZhaoguan/pb-cms" target="_blank">https://gitee.com/LinZhaoguan/pb-cms</a></li>
+                    <li>如需关注项目最新动态，请Star项目，同时也是对项目最好的支持，非常感谢</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(".connectedSortable").sortable({
+        placeholder: "sort-highlight",
+        connectWith: ".connectedSortable",
+        handle: ".box-header, .nav-tabs",
+        forcePlaceholderSize: true,
+        zIndex: 999999
+    });
+    $(".connectedSortable .box-header, .connectedSortable .nav-tabs-custom").css("cursor", "move");
+</script>
