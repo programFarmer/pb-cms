@@ -3,6 +3,7 @@ package com.puboot.common.config;
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.puboot.common.shiro.MyShiroRealm;
 import com.puboot.common.shiro.filter.KickoutSessionControlFilter;
+import com.puboot.common.util.CoreConst;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
@@ -183,6 +184,7 @@ public class ShiroConfig {
     @Bean
     public RedisSessionDAO redisSessionDAO() {
         RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
+        redisSessionDAO.setKeyPrefix(CoreConst.SHIRO_REDIS_SESSION_PREFIX);
         redisSessionDAO.setRedisManager(redisManager());
         return redisSessionDAO;
     }

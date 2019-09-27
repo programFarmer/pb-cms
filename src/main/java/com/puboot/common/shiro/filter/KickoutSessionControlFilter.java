@@ -1,6 +1,7 @@
 package com.puboot.common.shiro.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.puboot.common.util.CoreConst;
 import com.puboot.model.User;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +52,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
 
     //设置Cache的key的前缀
     public void setCacheManager(CacheManager cacheManager) {
-        this.cache = cacheManager.getCache("shiro_redis_cache");
+        this.cache = cacheManager.getCache(CoreConst.SHIRO_REDIS_CACHE_NAME);
     }
 
     @Override

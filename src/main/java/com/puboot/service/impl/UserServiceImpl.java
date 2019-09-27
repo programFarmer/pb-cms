@@ -3,6 +3,7 @@ package com.puboot.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.puboot.common.util.CoreConst;
 import com.puboot.common.util.Pagination;
 import com.puboot.mapper.UserMapper;
 import com.puboot.mapper.UserRoleMapper;
@@ -137,7 +138,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public void kickout(Serializable sessionId, String username) {
         getSessionBysessionId(sessionId).setAttribute("kickout", true);
         //读取缓存,找到并从队列中移除
-        Cache<String, Deque<Serializable>> cache = redisCacheManager.getCache(redisCacheManager.getKeyPrefix() + username);
+        Cache<String, Deque<Serializable>> cache = redisCacheManager.getCache(CoreConst.SHIRO_REDIS_CACHE_NAME);
         Deque<Serializable> deques = cache.get(username);
         for (Serializable deque : deques) {
             if (sessionId.equals(deque)) {
