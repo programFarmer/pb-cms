@@ -1,6 +1,6 @@
 package com.puboot.common.util;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.puboot.vo.CloudStorageConfigVo;
 import com.puboot.vo.base.ResponseVo;
 import com.qiniu.common.QiniuException;
@@ -42,7 +42,7 @@ public class QiNiuYunUtil {
         try {
             Response response = uploadManager.put(uploadBytes, key, upToken);
             //解析上传成功的结果
-            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            DefaultPutRet putRet = JSON.parseObject(response.bodyString(), DefaultPutRet.class);
 /*                System.out.println(putRet.key);
             System.out.println(putRet.hash);*/
             return new ResponseVo(CoreConst.SUCCESS_CODE, "上传成功");

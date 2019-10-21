@@ -1,6 +1,6 @@
 package com.puboot.controller;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.puboot.common.util.CoreConst;
 import com.puboot.common.util.MD5;
 import com.puboot.common.util.QiNiuYunUtil;
@@ -51,8 +51,7 @@ public class UploadController {
             SimpleDateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
             /*String dir = fmt.format(new Date());*/
             String value = sysConfigService.selectAll().get(SysConfigKey.CLOUD_STORAGE_CONFIG.getValue());
-            Gson gson = new Gson();
-            CloudStorageConfigVo cloudStorageConfig = gson.fromJson(value, CloudStorageConfigVo.class);
+            CloudStorageConfigVo cloudStorageConfig = JSON.parseObject(value, CloudStorageConfigVo.class);
             String dir = cloudStorageConfig.getQiniuPrefix();
             String md5 = MD5.getMessageDigest(file.getBytes());
             String filePath = String.format("%1$s/%2$s%3$s", dir, md5, suffix);
@@ -89,8 +88,7 @@ public class UploadController {
             String originalFilename = file.getOriginalFilename();
             String suffix = originalFilename.substring(originalFilename.lastIndexOf(".")).toLowerCase();
             String value = sysConfigService.selectAll().get(SysConfigKey.CLOUD_STORAGE_CONFIG.getValue());
-            Gson gson = new Gson();
-            CloudStorageConfigVo cloudStorageConfig = gson.fromJson(value, CloudStorageConfigVo.class);
+            CloudStorageConfigVo cloudStorageConfig = JSON.parseObject(value, CloudStorageConfigVo.class);
             String dir = cloudStorageConfig.getQiniuPrefix();
             String md5 = MD5.getMessageDigest(file.getBytes());
             String filePath = String.format("%1$s/%2$s%3$s", dir, md5, suffix);
@@ -115,8 +113,7 @@ public class UploadController {
     @GetMapping("/config")
     public String config(Model model) {
         String value = sysConfigService.selectAll().get(SysConfigKey.CLOUD_STORAGE_CONFIG.getValue());
-        Gson gson = new Gson();
-        CloudStorageConfigVo cloudStorageConfig = gson.fromJson(value, CloudStorageConfigVo.class);
+        CloudStorageConfigVo cloudStorageConfig = JSON.parseObject(value, CloudStorageConfigVo.class);
         model.addAttribute("cloudStorageConfig", cloudStorageConfig);
         return "upload/config";
     }
@@ -124,8 +121,7 @@ public class UploadController {
     @ResponseBody
     @PostMapping("/saveConfig")
     public ResponseVo saveConfig(CloudStorageConfigVo cloudStorageConfig) {
-        Gson gson = new Gson();
-        String value = gson.toJson(cloudStorageConfig);
+        String value = JSON.toJSONString(cloudStorageConfig);
         boolean a = sysConfigService.updateByKey(SysConfigKey.CLOUD_STORAGE_CONFIG.getValue(), value);
         if (a) {
             return ResultUtil.success("云存储配置保存成功！");
