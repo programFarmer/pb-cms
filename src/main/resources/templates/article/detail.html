@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four"  for="">文章类型:</label>
+                            <label class="control-label label-four" >文章类型:</label>
                             <div class="tags ml80 checkbox icheck">
                                 <label>
                                     <input th:field="*{article.original}" class="minimal"  type="radio"  name="original" checked  value="1">原创
@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">文章分类:</label>
+                            <label class="control-label label-four">文章分类:</label>
                             <div class="col-xs-6">
                                 <select id="category-select" class="form-control" name="categoryId" require="">
                                 </select>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">文章标签:</label>
+                            <label class="control-label label-four">文章标签:</label>
                             <div class="tags ml80 checkbox icheck">
                                 <label th:each="tag:${tags}">
                                     <input class="minimal" type="checkbox"  name="tag"  th:value="${tag.id}" th:text="${tag.name}" th:checked="${#lists.contains(article.tags,tag)? true: false}">
@@ -68,10 +68,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">文章封面:</label>
-                            <div class="ml80" style="position: relative">
+                            <label class="control-label label-four">文章封面:</label>
+                            <div class="input-group ml80" style="position: relative">
                                 <input th:value="${article.coverImage}" type="text" class="form-control" name="coverImage" id="coverImage" placeholder="" require="">
-                                <div class="jax-upload-btn" style="position: absolute;right: 10px;top: 0">
+                                <div class="btn btn-default input-group-btn jax-upload-btn" style="min-width: 50px">
                                     <i class="fa fa-cloud-upload upload-img-btn"></i>
                                 </div>
                             </div>
@@ -80,10 +80,10 @@
                     <div id="upload-content" class="upload-content form-group"></div>
                     <div id="sliderImgContent" th:class="${article.slider==1 ? 'form-group':'form-group display-none'}">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">轮播图:</label>
-                            <div class="ml80" style="position: relative">
+                            <label class="control-label label-four">轮播图:</label>
+                            <div class="input-group ml80" style="position: relative">
                                 <input id="sliderImg" th:value="${article.sliderImg}" type="text" class="form-control" name="sliderImg" placeholder="轮播图地址（建议800*300）" require="">
-                                <div class="jax-upload-btn" style="position: absolute;right: 10px;top: 0">
+                                <div class="btn btn-default input-group-btn jax-upload-btn" style="min-width: 50px">
                                     <i class="fa fa-cloud-upload upload-slider-btn"></i>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">是否轮播:</label>
+                            <label class="control-label label-four">是否轮播:</label>
                             <div class="tags ml80 checkbox icheck">
                                 <label>
                                     <input th:field="*{article.slider}" class="minimal" type="radio"  name="slider"  value="1">是
@@ -104,7 +104,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">是否置顶:</label>
+                            <label class="control-label label-four">是否置顶:</label>
                             <div class="tags ml80 checkbox icheck">
                                 <label>
                                     <input th:field="*{article.top}" class="minimal" type="radio"  name="top"  value="1">是
@@ -117,7 +117,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">是否推荐:</label>
+                            <label class="control-label label-four">是否推荐:</label>
                             <div class="tags ml80 checkbox icheck">
                                 <label>
                                     <input th:field="*{article.recommended}" class="minimal" type="radio"  name="recommended"  value="1">是
@@ -130,7 +130,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">开启评论:</label>
+                            <label class="control-label label-four">开启评论:</label>
                             <div class="tags ml80 checkbox icheck">
                                 <label>
                                     <input th:field="*{article.comment}" class="minimal" type="radio"  name="comment"  value="1">是
@@ -145,7 +145,7 @@
                 <div class="col-lg-4 article-extra mt20">
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">概要:</label>
+                            <label class="control-label label-four">概要:</label>
                             <div class="ml80">
                                 <textarea th:field="*{article.description}" type="text" rows="2" class="form-control" name="description" require="" placeholder="文章概要"></textarea>
                             </div>
@@ -153,7 +153,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label label-four" for="">关键词:</label>
+                            <label class="control-label label-four">关键词:</label>
                             <div class="ml80">
                                 <textarea th:field="*{article.keywords}" type="text" rows="2" class="form-control" name="keywords" require="" placeholder="文章关键词（SEO优化）"></textarea>
                             </div>
@@ -286,7 +286,7 @@
         $(".upload-img-btn").click(function(){
             if($("#upload-content").find(".upload-img-div").size()==0){
                 var s=$("#upload-content").find(".upload-div").size()==0 ? ' upload-div-1">' : '">';
-                var imgHtml = '<div class="col-md-6 upload-div upload-img-div'+s+
+                var imgHtml = '<div class="col-md-12 upload-div upload-img-div'+s+
                     '<div class="upload-item">'+
                     '<p class="upload-title">封面图</p>'+
                     '<p class="upload-file"><i class="fa fa-cloud-upload fz-70"></i></p>'+
@@ -310,7 +310,7 @@
         $(".upload-slider-btn").click(function(){
             if($("#upload-content").find(".upload-slider-div").size()==0){
                 var s=$("#upload-content").find(".upload-div").size()==0 ? ' upload-div-1">' : '">';
-                var imgHtml = '<div class="col-md-6 upload-div upload-slider-div'+s+
+                var imgHtml = '<div class="col-md-12 upload-div upload-slider-div'+s+
                     '<div class="upload-item">'+
                     '<p class="upload-title">轮播图</p>'+
                     '<p class="upload-file"><i class="fa fa-cloud-upload fz-70"></i></p>'+

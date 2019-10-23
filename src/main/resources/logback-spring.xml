@@ -6,7 +6,7 @@
     <property name="LOG_LEVEL" value="INFO"/>
     <property name="LOG_PATH" value="log"/>
     <property name="LOG_FILE" value="pb-cms.log"/>
-    <property name="LOG_HISTORY" value="aoc-api.%d{yyyy-MM-dd}.log"/>
+    <property name="LOG_HISTORY" value="pb-cms.%d{yyyy-MM-dd}.log"/>
 
     <!--日志输出到控制台-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">

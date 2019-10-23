@@ -73,6 +73,7 @@
 		love.loveCount AS love_count
 		FROM
 		biz_article a
+		INNER JOIN biz_article_tags atag ON a.id = atag.article_id
 		INNER JOIN biz_category category ON a.category_id = category.id
 		LEFT JOIN (
 		SELECT
