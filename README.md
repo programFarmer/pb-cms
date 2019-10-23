@@ -25,6 +25,7 @@ Spring Boot、Shiro、MyBatis-Plus、Druid、Redis、MySQL、thymeleaf<br/>
 7. 完全遵循Alibaba代码规范
 
 项目前台预览：[https://www.puboot.com](https://www.puboot.com)<br/>
+项目后台预览：[https://www.puboot.com/admin](https://www.puboot.com/admin)<br/>
 
 **用户密码**
 账号：guest 密码：123456<br/>
