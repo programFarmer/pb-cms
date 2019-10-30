@@ -86,7 +86,7 @@ public class CategoryController {
     @PostMapping("/delete")
     @ResponseBody
     public ResponseVo delete(Integer id) {
-        if (CollectionUtils.isEmpty(categoryService.selectByPid(id))) {
+        if (CollectionUtils.isNotEmpty(categoryService.selectByPid(id))) {
             return ResultUtil.error("该分类下存在子分类！");
         }
         boolean i = categoryService.removeById(id);
