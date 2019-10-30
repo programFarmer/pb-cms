@@ -26,27 +26,22 @@ $(function(){
     var clickHref="";//点击菜单判断使用
     //菜单列表html
     var menus = '';
-    $.ajax({
-        type: 'POST',
-        url: "/menu" ,
-        data: {} ,
-        success: function (data) {
-            GetData(0, data)
-            $("#menu").append(menus);
-            /*菜单点击事件*/
-            $(".sidebar-menu a").click(function () {
-                var aHref=$(this).attr("href");
-                if(clickHref==aHref){
-                    if(aHref.substring(1,aHref.length)!=""){
-                        Core.load("#content",aHref.substring(1,aHref.length));
-                    }
-                }else{
-                    clickHref = aHref;//赋值
+    Core.postAjax("/menu", {}, function (data) {
+        GetData(0, data)
+        $("#menu").append(menus);
+        /*菜单点击事件*/
+        $(".sidebar-menu a").click(function () {
+            var aHref=$(this).attr("href");
+            if(clickHref==aHref){
+                if(aHref.substring(1,aHref.length)!=""){
+                    Core.load("#content",aHref.substring(1,aHref.length));
                 }
-            });
-            /*初始化加载菜单样式*/
-            loadMenuRefresh();
-        }
+            }else{
+                clickHref = aHref;//赋值
+            }
+        });
+        /*初始化加载菜单样式*/
+        loadMenuRefresh();
     });
     //根据菜单主键id生成菜单列表html
     //id：菜单主键id

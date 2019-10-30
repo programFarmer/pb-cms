@@ -167,7 +167,7 @@
             title: '站长图片',
             align : "center",
             formatter : function(value) {
-               return '<img class="link-person-img" src="'+value+'" />'
+               return value ? '<img class="link-person-img" src="'+value+'" />' : ''
             }
         },{
             field: 'email',

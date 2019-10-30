@@ -11,7 +11,7 @@
     <link rel="stylesheet" th:href="@{/libs/font-awesome/font-awesome.min.css}"/>
     <link rel="stylesheet" th:href="@{/libs/iCheck/square/blue.css}"/>
     <link rel="stylesheet" th:href="@{/libs/validate/validate.css}"/>
-    <link rel="stylesheet" th:href="@{/libs/theme/zblog/css/web-common.css}"/>
+    <link rel="stylesheet" th:href="@{/libs/theme/pblog/css/web-common.css}"/>
     <link rel="stylesheet" th:href="@{/css/login.css}"/>
     <script th:src="@{/libs/jquery/jquery.min.js}"></script>
 </head>
@@ -37,7 +37,7 @@
                     <input type="text"  name="verification"  class="form-control vcode-input" placeholder="验证码" require="必填项" data-position="position-a">
                     <span class="fa fa-key vcode-icon form-control-feedback"></span>
                 </div>
-                <img src="/verificationCode" class="pointer vcode-img">
+                <img th:src="@{/verificationCode}" class="pointer vcode-img">
             </div>
             <div class="row">
                 <div class="col-xs-8">
@@ -67,6 +67,9 @@
 <script th:src="@{/libs/layer/layer.js}"></script>
 <script th:src="@{/libs/iCheck/icheck.min.js}"></script>
 <script th:src="@{/libs/validate/validate.js}"></script>
+<script th:inline="javascript">
+    var ctx = [[@{/}]];
+</script>
 <script>
     $(function () {
         $('input').iCheck({
@@ -82,7 +85,7 @@
         $(".vcode-img").on('click', function () {
 //            var url = '/Creditgt.jpg?d='+Math.random();
 //            $(this).attr('src',url);
-            $(this).attr('src', '/verificationCode?' + Math.floor(Math.random() * 100));
+            $(this).attr('src', ctx + '/verificationCode?' + Math.floor(Math.random() * 100));
         });
         $("#loginBtn").on('click', function () {
             if (!doValidForm(loginForm)) {
@@ -91,7 +94,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/login",
+                url: ctx + "/login",
                 data: $(".login-form").serialize(),
                 dataType: "json",
                 success: function (data) {
@@ -100,7 +103,7 @@
                             offset: '30%',
                             time: 800
                         }, function () {
-                            window.location.href = "/admin";
+                            window.location.href = ctx + "/admin";
                         });
                     }else{
                         layer.msg(data.msg, {
