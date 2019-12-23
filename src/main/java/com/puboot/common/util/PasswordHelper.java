@@ -1,7 +1,7 @@
 package com.puboot.common.util;
 
 
-import com.puboot.model.User;
+import com.puboot.module.admin.model.User;
 import lombok.experimental.UtilityClass;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;

@@ -1,10 +1,10 @@
 package com.puboot.component;
 
 import com.puboot.common.util.CoreConst;
-import com.puboot.model.BizCategory;
-import com.puboot.model.BizLink;
-import com.puboot.model.BizTags;
-import com.puboot.service.*;
+import com.puboot.module.admin.model.BizCategory;
+import com.puboot.module.admin.model.BizLink;
+import com.puboot.module.admin.model.BizTags;
+import com.puboot.module.admin.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,8 @@
 package com.puboot.common.shiro;
 
-import com.puboot.common.holder.SpringContextHolder;
 import com.puboot.common.util.CoreConst;
-import com.puboot.model.Permission;
-import com.puboot.service.PermissionService;
+import com.puboot.module.admin.model.Permission;
+import com.puboot.module.admin.service.PermissionService;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;

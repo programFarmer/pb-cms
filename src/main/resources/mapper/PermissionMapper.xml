@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.puboot.mapper.PermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.puboot.model.Permission" >
+<mapper namespace="com.puboot.module.admin.mapper.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.puboot.module.admin.model.Permission" >
     <!--
       WARNING - @mbggenerated
     -->
@@ -74,7 +74,7 @@
     WHERE permission_id = #{permissionId}
   </select>
 
-  <update id="updateByPermissionId" parameterType="com.puboot.model.Permission">
+  <update id="updateByPermissionId" parameterType="com.puboot.module.admin.model.Permission">
     UPDATE
     permission
     SET

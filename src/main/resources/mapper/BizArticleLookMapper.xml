@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.puboot.mapper.BizArticleLookMapper">
-    <resultMap id="rm" type="com.puboot.model.BizArticleLook">
+<mapper namespace="com.puboot.module.admin.mapper.BizArticleLookMapper">
+    <resultMap id="rm" type="com.puboot.module.admin.model.BizArticleLook">
         <result property="id" jdbcType="INTEGER" column="id"/>
         <result property="articleId" jdbcType="INTEGER" column="article_id"/>
         <result property="userId" jdbcType="VARCHAR" column="user_id"/>

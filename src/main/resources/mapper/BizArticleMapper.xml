@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.puboot.mapper.BizArticleMapper">
-	<resultMap id="rm" type="com.puboot.model.BizArticle">
+<mapper namespace="com.puboot.module.admin.mapper.BizArticleMapper">
+	<resultMap id="rm" type="com.puboot.module.admin.model.BizArticle">
 		<result property="id" jdbcType="INTEGER" column="id"/>
 		<result property="title" jdbcType="VARCHAR" column="title"/>
 		<result property="userId" jdbcType="VARCHAR" column="user_id"/>
@@ -28,12 +28,12 @@
 		<result property="lookCount" jdbcType="INTEGER" column="look_count"/>
 		<result property="commentCount" jdbcType="INTEGER" column="comment_count"/>
 		<result property="loveCount" jdbcType="INTEGER" column="love_count"/>
-		<association property="bizCategory" javaType="com.puboot.model.BizCategory">
+		<association property="bizCategory" javaType="com.puboot.module.admin.model.BizCategory">
 			<result property="id" jdbcType="INTEGER" column="b_category_id"/>
 			<result property="name" jdbcType="VARCHAR" column="b_category_name"/>
 			<result property="description" jdbcType="VARCHAR" column="b_category_description"/>
 		</association>
-		<collection property="tags" column="tag_id" javaType="ArrayList" ofType="com.puboot.model.BizTags">
+		<collection property="tags" column="tag_id" javaType="ArrayList" ofType="com.puboot.module.admin.model.BizTags">
 			<result property="id" jdbcType="INTEGER" column="tag_id"/>
 			<result property="name" jdbcType="VARCHAR" column="tag_name"/>
 			<result property="description" jdbcType="VARCHAR" column="tag_description"/>
@@ -62,7 +62,7 @@
 		update_time
 	</sql>
 
-	<select id="findByCondition" parameterType="com.puboot.vo.ArticleConditionVo" resultMap="rm">
+	<select id="findByCondition" parameterType="com.puboot.module.admin.vo.ArticleConditionVo" resultMap="rm">
 		SELECT
 		a.*,
 		category.id AS b_category_id,

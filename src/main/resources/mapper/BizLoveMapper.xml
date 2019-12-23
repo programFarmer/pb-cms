@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.puboot.mapper.BizLoveMapper">
-	<resultMap id="rm" type="com.puboot.model.BizLove">
+<mapper namespace="com.puboot.module.admin.mapper.BizLoveMapper">
+	<resultMap id="rm" type="com.puboot.module.admin.model.BizLove">
 		<result property="id" jdbcType="INTEGER" column="id"/>
 		<result property="bizId" jdbcType="INTEGER" column="biz_id"/>
 		<result property="bizType" jdbcType="INTEGER" column="biz_type"/>

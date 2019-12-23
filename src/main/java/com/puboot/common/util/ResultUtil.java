@@ -1,7 +1,7 @@
 package com.puboot.common.util;
 
-import com.puboot.vo.base.PageResultVo;
-import com.puboot.vo.base.ResponseVo;
+import com.puboot.module.admin.vo.base.PageResultVo;
+import com.puboot.module.admin.vo.base.ResponseVo;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;

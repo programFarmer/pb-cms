@@ -2,11 +2,10 @@ package com.puboot.common.shiro;
 
 import com.puboot.common.util.CoreConst;
 import com.puboot.common.util.IpUtil;
-import com.puboot.model.User;
-import com.puboot.service.PermissionService;
-import com.puboot.service.RoleService;
-import com.puboot.service.UserService;
-import lombok.AllArgsConstructor;
+import com.puboot.module.admin.model.User;
+import com.puboot.module.admin.service.PermissionService;
+import com.puboot.module.admin.service.RoleService;
+import com.puboot.module.admin.service.UserService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;

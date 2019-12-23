@@ -2,7 +2,7 @@ package com.puboot.common.aspect;
 
 import com.puboot.common.annotation.Cache;
 import com.puboot.common.util.AspectUtil;
-import com.puboot.service.RedisService;
+import com.puboot.module.admin.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -1,5 +1,5 @@
 //回到顶部
-$(window).scroll(function() {
+$(window).scroll(function () {
     //创建一个变量存储当前窗口下移的高度
     var scroTop = $(window).scrollTop();
     //判断当前窗口滚动高度
@@ -47,13 +47,13 @@ $(window).scroll(function() {
     };
 })(jQuery);
 
-$(document).ready(function() {
+$(document).ready(function () {
     /*$('#banner').easyFader();*/
-    if($(".swiper-container").length){
+    if ($(".swiper-container").length) {
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
             centeredSlides: true,
-            loop : true,
+            loop: true,
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
@@ -80,22 +80,18 @@ $(document).ready(function() {
         }
     });
     /*回到顶部点击函数*/
-    $('.return_top').click(function(){
-        $("html,body").animate({scrollTop:0},"fast");
+    $('.return_top').click(function () {
+        $("html,body").animate({scrollTop: 0}, "fast");
     });
-
-
-
-
 
 
 });
 
-window.onload=function(){
+window.onload = function () {
     var new_scroll_position = 0;
     var last_scroll_position;
     var header = document.getElementById("header");
-    window.addEventListener('scroll', function(e) {
+    window.addEventListener('scroll', function (e) {
         last_scroll_position = window.scrollY;
         if (new_scroll_position < last_scroll_position && last_scroll_position > 55) {
             header.classList.remove("slideDown");

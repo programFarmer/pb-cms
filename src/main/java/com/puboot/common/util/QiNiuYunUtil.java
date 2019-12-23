@@ -1,8 +1,8 @@
 package com.puboot.common.util;
 
 import com.alibaba.fastjson.JSON;
-import com.puboot.vo.CloudStorageConfigVo;
-import com.puboot.vo.base.ResponseVo;
+import com.puboot.module.admin.vo.CloudStorageConfigVo;
+import com.puboot.module.admin.vo.base.ResponseVo;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;

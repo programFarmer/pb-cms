@@ -2,7 +2,7 @@ package com.puboot.common.shiro.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.puboot.common.util.CoreConst;
-import com.puboot.model.User;
+import com.puboot.module.admin.model.User;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.cache.Cache;
