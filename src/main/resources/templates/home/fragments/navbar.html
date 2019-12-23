@@ -1,10 +1,3 @@
-<div th:fragment="top"  class="top-box">
-    <div class="pb-container">
-        <span class="">
-            欢迎访问智博客，这是一个记录世界的平台！
-        </span>
-    </div>
-</div>
 <nav id ="navbar" th:fragment="navbar" class="navbar navbar-default ">
     <div class="pb-container">
         <div class="navbar-header">
@@ -19,7 +12,7 @@
                 <span class="icon-bar">
 							</span>
             </button>
-            <a class="logo-a" href="/">
+            <a class="logo-a" th:href="@{/}">
                 <img src="http://img.puboot.com/logo.png" alt="logo" />
             </a>
         </div>

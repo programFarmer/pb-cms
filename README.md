@@ -35,7 +35,7 @@ Spring Boot、Shiro、MyBatis-Plus、Druid、Redis、MySQL、thymeleaf<br/>
 
 #### 使用说明
 
-1. 使用IDE导入本项目
+1. 使用IDE导入本项目，IDE需要安装[lombok](https://projectlombok.org/)插件
 2. 新建数据库`CREATE DATABASE pb_cms_base;`
 3. 导入数据库,数据库文件目录:`docs/db/pb_cms_base.sql`
 4. 修改(`resources/application.yml`)配置文件
