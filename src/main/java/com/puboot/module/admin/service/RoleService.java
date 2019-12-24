@@ -28,11 +28,11 @@ public interface RoleService extends IService<Role> {
      * 根据条件查询角色列表
      *
      * @param role
-     * @param limit
-     * @param offset
+     * @param pageNumber
+     * @param pageSize
      * @return list
      */
-    IPage<Role> selectRoles(Role role, Integer limit, Integer offset);
+    IPage<Role> selectRoles(Role role, Integer pageNumber, Integer pageSize);
 
     /**
      * 插入角色

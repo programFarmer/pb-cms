@@ -2,7 +2,6 @@ package com.puboot.module.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.puboot.common.util.CoreConst;
-import com.puboot.common.util.PageUtil;
 import com.puboot.common.util.Pagination;
 import com.puboot.common.util.ResultUtil;
 import com.puboot.module.admin.model.BizTheme;
@@ -33,8 +32,8 @@ public class ThemeController {
 
     @PostMapping("list")
     @ResponseBody
-    public PageResultVo loadTheme(Integer limit, Integer offset) {
-        IPage<BizTheme> page = new Pagination<>(PageUtil.getPageNo(limit, offset), limit);
+    public PageResultVo loadTheme(Integer pageNumber, Integer pageSize) {
+        IPage<BizTheme> page = new Pagination<>(pageNumber, pageSize);
         page = bizThemeService.page(page);
         return ResultUtil.table(page.getRecords(), page.getTotal());
     }

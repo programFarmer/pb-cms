@@ -2,7 +2,10 @@ package com.puboot.module.admin.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.puboot.common.util.*;
+import com.puboot.common.util.CoreConst;
+import com.puboot.common.util.Pagination;
+import com.puboot.common.util.PushArticleUtil;
+import com.puboot.common.util.ResultUtil;
 import com.puboot.enums.SysConfigKey;
 import com.puboot.module.admin.model.BizArticle;
 import com.puboot.module.admin.model.BizCategory;
@@ -42,9 +45,9 @@ public class ArticleController {
 
     @PostMapping("list")
     @ResponseBody
-    public PageResultVo loadArticle(ArticleConditionVo articleConditionVo, Integer limit, Integer offset) {
+    public PageResultVo loadArticle(ArticleConditionVo articleConditionVo, Integer pageNumber, Integer pageSize) {
         articleConditionVo.setSliderFlag(true);
-        IPage<BizArticle> page = new Pagination<>(PageUtil.getPageNo(limit, offset), limit);
+        IPage<BizArticle> page = new Pagination<>(pageNumber, pageSize);
         List<BizArticle> articleList = articleService.findByCondition(page, articleConditionVo);
         return ResultUtil.table(articleList, page.getTotal());
     }
@@ -108,7 +111,7 @@ public class ArticleController {
         }
         bizArticle.setTags(aTags);
         model.addAttribute("tags", sTags);
-        return "article/detail";
+        return CoreConst.ADMIN_PREFIX + "article/detail";
     }
 
     @PostMapping("/edit")

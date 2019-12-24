@@ -34,10 +34,10 @@ public class OnlineUserController {
     // 在线用户列表
     @PostMapping("/list")
     @ResponseBody
-    public PageResultVo onlineUsers(UserOnlineVo user, Integer limit, Integer offset) {
+    public PageResultVo onlineUsers(UserOnlineVo user, Integer pageNumber, Integer pageSize) {
         List<UserOnlineVo> userList = userService.selectOnlineUsers(user);
-        int endIndex = (offset + limit) > userList.size() ? userList.size() : (offset + limit);
-        return ResultUtil.table(userList.subList(offset, endIndex), (long) userList.size());
+        int endIndex = Math.min(pageNumber * pageSize, userList.size());
+        return ResultUtil.table(userList.subList((pageNumber - 1) * pageSize, endIndex), (long) userList.size());
     }
 
     // 强制踢出用户

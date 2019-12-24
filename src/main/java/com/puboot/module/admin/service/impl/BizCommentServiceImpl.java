@@ -22,8 +22,8 @@ public class BizCommentServiceImpl extends ServiceImpl<BizCommentMapper, BizComm
     private final BizCommentMapper commentMapper;
 
     @Override
-    public IPage<BizComment> selectComments(CommentConditionVo vo) {
-        IPage<BizComment> page = new Pagination<>(vo.getPageNumber(), vo.getPageSize());
+    public IPage<BizComment> selectComments(CommentConditionVo vo, Integer pageNumber, Integer pageSize) {
+        IPage<BizComment> page = new Pagination<>(pageNumber, pageSize);
         page.setRecords(commentMapper.selectComments(page, vo));
         return page;
     }

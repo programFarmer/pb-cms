@@ -30,8 +30,8 @@ public class LinksController {
 
     @PostMapping("list")
     @ResponseBody
-    public PageResultVo loadLinks(BizLink bizLink, Integer limit, Integer offset) {
-        IPage<BizLink> bizLinkPage = linkService.pageLinks(bizLink, limit, offset);
+    public PageResultVo loadLinks(BizLink bizLink, Integer pageNumber, Integer pageSize) {
+        IPage<BizLink> bizLinkPage = linkService.pageLinks(bizLink, pageNumber, pageSize);
         return ResultUtil.table(bizLinkPage.getRecords(), bizLinkPage.getTotal());
     }
 

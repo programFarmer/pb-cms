@@ -2,7 +2,6 @@ package com.puboot.module.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.puboot.common.util.PageUtil;
 import com.puboot.common.util.Pagination;
 import com.puboot.module.admin.mapper.BizLinkMapper;
 import com.puboot.module.admin.model.BizLink;
@@ -29,8 +28,8 @@ public class BizLinkServiceImpl extends ServiceImpl<BizLinkMapper, BizLink> impl
     }
 
     @Override
-    public IPage<BizLink> pageLinks(BizLink bizLink, Integer limit, Integer offset) {
-        IPage<BizLink> page = new Pagination<>(PageUtil.getPageNo(limit, offset), limit);
+    public IPage<BizLink> pageLinks(BizLink bizLink, Integer pageNumber, Integer pageSize) {
+        IPage<BizLink> page = new Pagination<>(pageNumber, pageSize);
         page.setRecords(linkMapper.selectLinks(page, bizLink));
         return page;
     }

@@ -2,7 +2,6 @@ package com.puboot.module.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.puboot.common.util.PageUtil;
 import com.puboot.common.util.Pagination;
 import com.puboot.module.admin.mapper.BizTagsMapper;
 import com.puboot.module.admin.model.BizTags;
@@ -30,8 +29,8 @@ public class BizTagsServiceImpl extends ServiceImpl<BizTagsMapper, BizTags> impl
     }
 
     @Override
-    public IPage<BizTags> pageTags(BizTags bizTags, Integer limit, Integer offset) {
-        IPage<BizTags> page = new Pagination<>(PageUtil.getPageNo(limit, offset), limit);
+    public IPage<BizTags> pageTags(BizTags bizTags, Integer pageNumber, Integer pageSize) {
+        IPage<BizTags> page = new Pagination<>(pageNumber, pageSize);
         return page.setRecords(bizTagsMapper.selectTags(page, bizTags));
     }
 

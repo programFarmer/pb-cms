@@ -46,9 +46,9 @@ public class RoleController {
     /*角色列表数据*/
     @PostMapping("/list")
     @ResponseBody
-    public PageResultVo pageRoles(Role role, Integer limit, Integer offset) {
+    public PageResultVo pageRoles(Role role, Integer pageNumber, Integer pageSize) {
         try {
-            IPage<Role> rolePage = roleService.selectRoles(role, limit, offset);
+            IPage<Role> rolePage = roleService.selectRoles(role, pageNumber, pageSize);
             return ResultUtil.table(rolePage.getRecords(), rolePage.getTotal());
         } catch (Exception e) {
             log.error(String.format("RoleController.loadRoles%s", e));

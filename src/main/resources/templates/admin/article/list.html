@@ -17,9 +17,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <label class="control-label  col-xs-4" for="aiticle">分类:</label>
+                    <label class="control-label  col-xs-4">分类:</label>
                     <div class="col-xs-8">
-                        <select class="form-control"id="categoryId">
+                        <select class="form-control" id="categoryId">
                             <option  value="">请选择</option>
                             <option th:each="category:${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                         </select>
@@ -179,8 +179,8 @@
     /*查询参数*/
     function queryParams(params) {
         var temp = { //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
-            limit : params.limit, //页面大小
-            offset : params.offset, //页码
+            pageNumber: params.pageNumber, // 页码
+            pageSize: params.pageSize, // 分页大小
             keywords : $("#keywords").val(),
             categoryId : $("#categoryId").val(),
             status : $("#status").val(),

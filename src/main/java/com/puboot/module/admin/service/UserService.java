@@ -42,11 +42,11 @@ public interface UserService extends IService<User> {
      * 根据条件查询用户列表
      *
      * @param user
-     * @param pageNo
+     * @param pageNumber
      * @param pageSize
      * @return list
      */
-    IPage<User> selectUsers(User user, Integer pageNo, Integer pageSize);
+    IPage<User> selectUsers(User user, Integer pageNumber, Integer pageSize);
 
     /**
      * 根据用户id查询用户

@@ -15,7 +15,7 @@ public interface BizLinkService extends IService<BizLink> {
 
     List<BizLink> selectLinks(BizLink bizLink);
 
-    IPage<BizLink> pageLinks(BizLink bizLink, Integer limit, Integer offset);
+    IPage<BizLink> pageLinks(BizLink bizLink, Integer pageNumber, Integer pageSize);
 
     int deleteBatch(Integer[] ids);
 

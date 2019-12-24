@@ -31,8 +31,8 @@ public class TagController {
 
     @PostMapping("list")
     @ResponseBody
-    public PageResultVo loadTags(BizTags bizTags, Integer limit, Integer offset) {
-        IPage<BizTags> bizTagsPage = tagsService.pageTags(bizTags, limit, offset);
+    public PageResultVo loadTags(BizTags bizTags, Integer pageNumber, Integer pageSize) {
+        IPage<BizTags> bizTagsPage = tagsService.pageTags(bizTags, pageNumber, pageSize);
         return ResultUtil.table(bizTagsPage.getRecords(), bizTagsPage.getTotal());
     }
 

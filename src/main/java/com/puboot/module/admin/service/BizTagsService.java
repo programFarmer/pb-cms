@@ -15,7 +15,7 @@ public interface BizTagsService extends IService<BizTags> {
 
     List<BizTags> selectTags(BizTags bizTags);
 
-    IPage<BizTags> pageTags(BizTags bizTags, Integer limit, Integer offset);
+    IPage<BizTags> pageTags(BizTags bizTags, Integer pageNumber, Integer pageSize);
 
     int deleteBatch(Integer[] ids);
 }

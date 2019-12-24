@@ -25,7 +25,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class AdminRenderController {
 
-    
 
     private final BizCategoryService categoryService;
     private final SysConfigService sysConfigService;
@@ -38,7 +37,9 @@ public class AdminRenderController {
         return CoreConst.ADMIN_PREFIX + "index/index";
     }
 
-    /*工作台*/
+    /**
+     * 工作台
+     */
     @GetMapping("/workdest")
     public String workdest() {
         return CoreConst.ADMIN_PREFIX + "index/workdest";
@@ -68,7 +69,9 @@ public class AdminRenderController {
         return CoreConst.ADMIN_PREFIX + "permission/list";
     }
 
-    /*在线用户入口*/
+    /**
+     * 在线用户入口
+     */
     @GetMapping("/online/users")
     public String onlineUsers() {
         return CoreConst.ADMIN_PREFIX + "onlineUsers/list";

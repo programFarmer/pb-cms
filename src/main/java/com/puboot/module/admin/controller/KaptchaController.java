@@ -2,6 +2,7 @@ package com.puboot.module.admin.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,15 +25,11 @@ import java.io.IOException;
  */
 @Slf4j
 @Controller
+@AllArgsConstructor
 public class KaptchaController {
 
 
-    private Producer captchaProducer = null;
-
-    @Autowired
-    public void setCaptchaProducer(Producer captchaProducer) {
-        this.captchaProducer = captchaProducer;
-    }
+    private final Producer captchaProducer;
 
     /**
      * 获取验证码图片

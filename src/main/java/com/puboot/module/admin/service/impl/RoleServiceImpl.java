@@ -3,7 +3,6 @@ package com.puboot.module.admin.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.puboot.common.util.PageUtil;
 import com.puboot.common.util.Pagination;
 import com.puboot.common.util.UUIDUtil;
 import com.puboot.module.admin.mapper.PermissionMapper;
@@ -40,8 +39,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
-    public IPage<Role> selectRoles(Role role, Integer limit, Integer offset) {
-        IPage<Role> page = new Pagination<>(PageUtil.getPageNo(limit, offset), limit);
+    public IPage<Role> selectRoles(Role role, Integer pageNumber, Integer pageSize) {
+        IPage<Role> page = new Pagination<>(pageNumber, pageSize);
         return roleMapper.selectRoles(page, role);
     }
 

@@ -12,7 +12,7 @@ import com.puboot.module.admin.vo.CommentConditionVo;
  */
 public interface BizCommentService extends IService<BizComment> {
 
-    IPage<BizComment> selectComments(CommentConditionVo vo);
+    IPage<BizComment> selectComments(CommentConditionVo vo, Integer pageNumber, Integer pageSize);
 
     int deleteBatch(Integer[] ids);
 

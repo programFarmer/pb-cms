@@ -9,9 +9,8 @@ import lombok.EqualsAndHashCode;
  * @version V1.0
  * @date 2019年9月11日
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class CommentConditionVo extends BaseConditionVo {
+public class CommentConditionVo {
     private String userId;
     private Integer sid;
     private Integer pid;

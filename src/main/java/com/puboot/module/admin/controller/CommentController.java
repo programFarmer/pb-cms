@@ -3,7 +3,6 @@ package com.puboot.module.admin.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.puboot.common.util.CoreConst;
 import com.puboot.common.util.IpUtil;
-import com.puboot.common.util.PageUtil;
 import com.puboot.common.util.ResultUtil;
 import com.puboot.module.admin.model.BizComment;
 import com.puboot.module.admin.model.User;
@@ -38,10 +37,9 @@ public class CommentController {
     private final BizCommentService commentService;
 
     @PostMapping("list")
-    public PageResultVo loadNotify(CommentConditionVo vo, Integer limit, Integer offset) {
-        vo.setPageNumber(PageUtil.getPageNo(limit, offset));
-        vo.setPageSize(limit);
-        IPage<BizComment> commentPage = commentService.selectComments(vo);
+    public PageResultVo loadNotify(CommentConditionVo vo, Integer pageNumber, Integer pageSize) {
+
+        IPage<BizComment> commentPage = commentService.selectComments(vo, pageNumber, pageSize);
         return ResultUtil.table(commentPage.getRecords(), commentPage.getTotal());
     }
 

@@ -55,7 +55,7 @@
                 }
                 var name = $check.attr("name");
                 var id = name + "-" + i;
-                var $label = $('<label for="'+ id +'"></label>');
+                var $label = $('<label for="' + id + '"></label>');
                 $check.attr("id", id).parent().addClass("bella-checkbox").append($label);
             });
             if ($.isFunction(options.onPostBody)) {
@@ -92,7 +92,7 @@ var Core = (function () {
             sortable: false, //是否启用排序
             sortOrder: "asc", //排序方式
             sortName: "", //排序字段
-            queryParamsType: "limit",
+            queryParamsType: "",
             sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
             showColumns: false, //是否显示所有的列
             showRefresh: false, //是否显示刷新按钮
@@ -112,7 +112,7 @@ var Core = (function () {
     core.postAjax = function (url, dataToPost, d, type, contentType, async) {
         url = (ctx + url).replace('//', '/');
         $.ajax({
-            url:  url,
+            url: url,
             cache: false,
             async: async == undefined ? true : async,
             data: dataToPost,
@@ -123,36 +123,36 @@ var Core = (function () {
                     d(data);
                 }
             },
-            error:function (XMLHttpRequest, textStatus, errorThrown) {
-                if(XMLHttpRequest.status==403){
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (XMLHttpRequest.status == 403) {
                     layer.msg("您没有权限访问，请联系管理员！")
-                }else if(XMLHttpRequest.status==500){
+                } else if (XMLHttpRequest.status == 500) {
                     layer.msg("服务器内部错误！")
-                }else if(XMLHttpRequest.status==404){
+                } else if (XMLHttpRequest.status == 404) {
                     layer.msg("您访问的内容不存在！")
-                }else{
+                } else {
                     layer.msg("服务器未知错误！")
                 }
             }
         });
     };
     /*load()*/
-    core.load = function (id,url,d,t) {
+    core.load = function (id, url, d, t) {
         url = (ctx + url).replace('//', '/');
         $(id).html("");
-        $(id).load(url,function(response,status,XMLHttpRequest){
-            if (typeof d == "function" && status=="success") {
+        $(id).load(url, function (response, status, XMLHttpRequest) {
+            if (typeof d == "function" && status == "success") {
                 d();
             }
-            if(status=="error"){
-                if(t==undefined||t==1){
+            if (status == "error") {
+                if (t == undefined || t == 1) {
                     $("#content").html(response);
-                }else if(t=2){
-                    if(XMLHttpRequest.status==403){
+                } else if (t = 2) {
+                    if (XMLHttpRequest.status == 403) {
                         layer.msg("您没有权限访问！")
-                    }else if(XMLHttpRequest.status==500){
+                    } else if (XMLHttpRequest.status == 500) {
                         layer.msg("服务器内部错误！")
-                    }else{
+                    } else {
                         layer.msg("服务器未知错误！")
                     }
                 }
@@ -218,11 +218,11 @@ var Core = (function () {
             detailView: tableOptions.detailView, //是否显示父子表
             showExport: tableOptions.showExport, //是否显示导出
             exportDataType: tableOptions.exportDataType, //basic', 'all', 'selected'.
-            escape: tableOptions.escape,//html转意
+            escape: tableOptions.escape,//html转义
             //            align: "center",
             columns: tableOptions.columns,//表格列
             onLoadSuccess: tableOptions.onLoadSuccess,
-            onPostBody : function () {
+            onPostBody: function () {
                 //改变复选框样式
                 $(tableOptions.id).find("input:checkbox").each(function (i) {
                     var $check = $(this);
@@ -231,7 +231,7 @@ var Core = (function () {
                     }
                     var name = $check.attr("name");
                     var id = name + "-" + i;
-                    var $label = (i==0?$('<label for="'+ id +'"></label>'):$('<label></label>'));
+                    var $label = (i == 0 ? $('<label for="' + id + '"></label>') : $('<label></label>'));
                     $check.attr("id", id).parent().addClass("pb-checkbox").append($label);
                 });
                 $(tableOptions.id).find("input:radio").each(function (i) {
@@ -241,7 +241,7 @@ var Core = (function () {
                     }
                     var name = $check.attr("name");
                     var id = name + "-" + i;
-                    var $label = (i==0?$('<label for="'+ id +'"></label>'):(tableOptions.clickToSelect==true?$('<label></label>'):$('<label for="'+ id +'"></label>')));
+                    var $label = (i == 0 ? $('<label for="' + id + '"></label>') : (tableOptions.clickToSelect == true ? $('<label></label>') : $('<label for="' + id + '"></label>')));
                     $check.attr("id", id).parent().addClass("pb-radio").append($label);
                 });
                 if ($.isFunction(options.onPostBody)) {
@@ -262,7 +262,7 @@ var Core = (function () {
     }
 
     /*根据data选中数据*/
-    core.checkTableBy=function (id,data) {
+    core.checkTableBy = function (id, data) {
         $(id).bootstrapTable("checkBy", data)
     }
 
@@ -270,26 +270,26 @@ var Core = (function () {
     core.getRowByUniqueId = function (id, val) {
         return $(id).bootstrapTable("getRowByUniqueId", val);
     }
-    core.selectSingleData = function (id){
+    core.selectSingleData = function (id) {
         var selectContent = $(id).bootstrapTable('getSelections');
-        if(typeof(selectContent) == 'undefined' || selectContent == "") {
+        if (typeof (selectContent) == 'undefined' || selectContent == "") {
             layer.msg("请先选择一条数据!");
             return false;
-        }else if(selectContent.length > 1){
+        } else if (selectContent.length > 1) {
             layer.msg("只能选择一条数据!");
             return false;
-        }else{
+        } else {
             var selectData = selectContent[0];
             return selectData;
         }
     }
 
-    core.selectMutiData = function (id){
-        var checkedRows= $(id).bootstrapTable('getSelections');
-        if(checkedRows.length==0){
+    core.selectMutiData = function (id) {
+        var checkedRows = $(id).bootstrapTable('getSelections');
+        if (checkedRows.length == 0) {
             layer.msg("请先选择一条数据！");
             return false;
-        }else{
+        } else {
             return checkedRows;
         }
     }
@@ -315,7 +315,7 @@ var Core = (function () {
     }
 
     /*询问框*/
-    core.confirm = function(content,d){
+    core.confirm = function (content, d) {
         layer.confirm(content, {
             icon: 3,
             title: "系统提示",
@@ -365,6 +365,7 @@ var Core = (function () {
         var day = date.getDate();
         return date.getFullYear() + '-' + getFormatDate(month) + '-' + getFormatDate(day);
     }
+
     function getFormatDate(arg) {
         if (arg == undefined || arg == '') {
             return '';
@@ -390,25 +391,19 @@ var Core = (function () {
         for (var i = 0; i < objId.elements.length; i++) {
             if (objId.elements[i].type == "text") {
                 objId.elements[i].value = "";
-            }
-            else if (objId.elements[i].type == "password") {
+            } else if (objId.elements[i].type == "password") {
                 objId.elements[i].value = "";
-            }
-            else if (objId.elements[i].type == "radio") {
+            } else if (objId.elements[i].type == "radio") {
                 objId.elements[i].checked = false;
-            }
-            else if (objId.elements[i].type == "checkbox") {
+            } else if (objId.elements[i].type == "checkbox") {
                 objId.elements[i].checked = false;
-            }
-            else if (objId.elements[i].type == "select-one") {
+            } else if (objId.elements[i].type == "select-one") {
                 objId.elements[i].options[0].selected = true;
-            }
-            else if (objId.elements[i].type == "select-multiple") {
+            } else if (objId.elements[i].type == "select-multiple") {
                 for (var j = 0; j < objId.elements[i].options.length; j++) {
                     objId.elements[i].options[j].selected = false;
                 }
-            }
-            else if (objId.elements[i].type == "textarea") {
+            } else if (objId.elements[i].type == "textarea") {
                 objId.elements[i].value = "";
             }
         }
@@ -445,74 +440,75 @@ var Core = (function () {
 
     // 判断是否为json对象
     core.isJsonObject = function (obj) {
-        var isjson = typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
+        var isjson = typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
         return isjson;
     }
 
-    core.setCookie =  function (cname,cvalue,exdays){
+    core.setCookie = function (cname, cvalue, exdays) {
         var d = new Date();
-        d.setTime(d.getTime()+(exdays*24*60*60*1000));
-        var expires = "expires="+d.toGMTString();
-        document.cookie = cname+"="+cvalue+"; "+expires+";path=/";
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + "; " + expires + ";path=/";
     }
-    core.getCookie =  function (cname){
+    core.getCookie = function (cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
-        for(var i=0; i<ca.length; i++) {
+        for (var i = 0; i < ca.length; i++) {
             var c = ca[i].trim();
-            if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
         }
         return "";
     }
 
-    core.getQqInfo = function (qq,d) {
+    core.getQqInfo = function (qq, d) {
         $.ajax({  /* 使用ajax请求 */
             type: "get",  /* 请求方式为GET */
-            url: "http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins="+qq,  /* 发送请求的地址 */
+            url: "http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq,  /* 发送请求的地址 */
             dataType: "jsonp",   /* 返回JSONP格式 */
             scriptCharset: 'gbk',
             jsonp: "callback",    /* 重写回调函数名 */
-            jsonpCallback:"portraitCallBack",  /* 指定回调函数名 */
-            success: function(json){  /* 请求成功输出 */
-                if(json[qq]==undefined||json[qq][6].trim()==""){
+            jsonpCallback: "portraitCallBack",  /* 指定回调函数名 */
+            success: function (json) {  /* 请求成功输出 */
+                if (json[qq] == undefined || json[qq][6].trim() == "") {
                     layer.msg("qq信息不存在！")
                     return;
                 }
-                var qqInfo={qq:"",nickname:"",avatar:""};
-                for(var key in json){
-                    qqInfo.qq=key;
+                var qqInfo = {qq: "", nickname: "", avatar: ""};
+                for (var key in json) {
+                    qqInfo.qq = key;
                 }
-                qqInfo.nickname=json[qq][6];
-                qqInfo.avatar=json[qq][0];
+                qqInfo.nickname = json[qq][6];
+                qqInfo.avatar = json[qq][0];
                 if (typeof d == "function") {
                     d(qqInfo);
                 }
             },
-            error: function(){  /* 请求失败输出 */
+            error: function () {  /* 请求失败输出 */
                 layer.msg('获取QQ信息失败');
             }
         });
     }
 
 
-
     return core;
 })(Core, window);
-Date.prototype.Format = function(fmt) {
+Date.prototype.Format = function (fmt) {
     var o = {
-        "M+" : this.getMonth() + 1, // 月份
-        "d+" : this.getDate(), // 日
-        "h+" : this.getHours(), // 小时
-        "m+" : this.getMinutes(), // 分
-        "s+" : this.getSeconds(), // 秒
-        "q+" : Math.floor((this.getMonth() + 3) / 3), // 季度
-        "S" : this.getMilliseconds()
+        "M+": this.getMonth() + 1, // 月份
+        "d+": this.getDate(), // 日
+        "h+": this.getHours(), // 小时
+        "m+": this.getMinutes(), // 分
+        "s+": this.getSeconds(), // 秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+        "S": this.getMilliseconds()
 // 毫秒
     };
     if (/(y+)/.test(fmt))
         fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "")
             .substr(4 - RegExp.$1.length));
-    for ( var k in o)
+    for (var k in o)
         if (new RegExp("(" + k + ")").test(fmt))
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k])
                 : (("00" + o[k]).substr(("" + o[k]).length)));
@@ -521,11 +517,11 @@ Date.prototype.Format = function(fmt) {
 };
 
 function queryInitParams(params) {
-    var temp = { //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
-        limit: params.limit, //页面大小
-        offset: params.offset //页码
+    //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+    return {
+        pageNumber: params.pageNumber, // 页码
+        pageSize: params.pageSize // 分页大小
     };
-    return temp;
 }
 
 function responseHandler(data) {

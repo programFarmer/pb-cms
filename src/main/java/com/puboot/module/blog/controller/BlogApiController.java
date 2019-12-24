@@ -41,8 +41,8 @@ public class BlogApiController {
 
 
     @PostMapping("comments")
-    public IPage<BizComment> getComments(CommentConditionVo vo) {
-        return commentService.selectComments(vo);
+    public IPage<BizComment> getComments(CommentConditionVo vo, Integer pageNumber, Integer pageSize) {
+        return commentService.selectComments(vo, pageNumber, pageSize);
     }
 
     @PostMapping("comment/save")
@@ -79,7 +79,6 @@ public class BlogApiController {
         }
     }
 
-    ;
 
     @PostMapping("article/look")
     public ResponseVo checkLook(HttpServletRequest request, Integer articleId) {
@@ -101,7 +100,6 @@ public class BlogApiController {
         }
     }
 
-    ;
 
     @PostMapping("love")
     public ResponseVo love(HttpServletRequest request, Integer bizId, Integer bizType) {

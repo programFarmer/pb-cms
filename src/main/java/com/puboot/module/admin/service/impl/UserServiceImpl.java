@@ -67,8 +67,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public IPage<User> selectUsers(User user, Integer pageNo, Integer pageSize) {
-        IPage<User> page = new Pagination<>(pageNo, pageSize);
+    public IPage<User> selectUsers(User user, Integer pageNumber, Integer pageSize) {
+        IPage<User> page = new Pagination<>(pageNumber, pageSize);
         return userMapper.selectUsers(page, user);
     }
 
