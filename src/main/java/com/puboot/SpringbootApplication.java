@@ -25,6 +25,9 @@ public class SpringbootApplication {
         String ip = InetAddress.getLocalHost().getHostAddress();
         String port = env.getProperty("server.port");
         String contextPath = env.getProperty("server.servlet.context-path");
+        if (contextPath == null) {
+            contextPath = "";
+        }
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application is running! Access URLs:\n\t" +
                 "Local: \t\thttp://localhost:" + port + contextPath + "/\n\t" +
