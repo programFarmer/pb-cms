@@ -85,7 +85,7 @@
         $(".vcode-img").on('click', function () {
 //            var url = '/Creditgt.jpg?d='+Math.random();
 //            $(this).attr('src',url);
-            $(this).attr('src', ctx + '/verificationCode?' + Math.floor(Math.random() * 100));
+            $(this).attr('src', (ctx + '/verificationCode?').replace('//', '/') + Math.floor(Math.random() * 100));
         });
         $("#loginBtn").on('click', function () {
             if (!doValidForm(loginForm)) {
@@ -94,7 +94,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: ctx + "/login",
+                url: (ctx + "/login").replace('//', '/'),
                 data: $(".login-form").serialize(),
                 dataType: "json",
                 success: function (data) {
@@ -103,7 +103,7 @@
                             offset: '30%',
                             time: 800
                         }, function () {
-                            window.location.href = ctx + "/admin";
+                            window.location.href = (ctx + "/admin").replace('//', '/');
                         });
                     }else{
                         layer.msg(data.msg, {

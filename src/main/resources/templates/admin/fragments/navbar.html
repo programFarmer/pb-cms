@@ -117,7 +117,7 @@
                 Core.confirm("确认退出？",function () {
                     Core.postAjax("/logout",{},function(data){
                         if(data.status==200){
-                            window.location.href = ctx + "/login";
+                            window.location.href = (ctx + "/login").replace('//', '/');
                         }else{
                             layer.msg(data.msg);
                         }

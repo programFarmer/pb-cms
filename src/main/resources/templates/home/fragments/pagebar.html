@@ -12,7 +12,7 @@
                 currentPage: [[${page.current}]],
                 totalPage: [[${page.pages}]],
                 callback: function (current) {
-                    window.location.href = ctx + pageUrl + '/' +  current;
+                    window.location.href = (ctx + pageUrl + '/' +  current).replace('//', '/');
                 }
             });
         })

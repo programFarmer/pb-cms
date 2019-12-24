@@ -110,8 +110,9 @@ var Core = (function () {
     };
     /*ajax请求*/
     core.postAjax = function (url, dataToPost, d, type, contentType, async) {
+        url = (ctx + url).replace('//', '/');
         $.ajax({
-            url: ctx + url,
+            url:  url,
             cache: false,
             async: async == undefined ? true : async,
             data: dataToPost,
@@ -137,8 +138,9 @@ var Core = (function () {
     };
     /*load()*/
     core.load = function (id,url,d,t) {
+        url = (ctx + url).replace('//', '/');
         $(id).html("");
-        $(id).load(ctx + url,function(response,status,XMLHttpRequest){
+        $(id).load(url,function(response,status,XMLHttpRequest){
             if (typeof d == "function" && status=="success") {
                 d();
             }
@@ -181,8 +183,9 @@ var Core = (function () {
     /*bootstrap-table表格*/
     core.initTable = function (options, success) {
         var tableOptions = $.extend({}, coreOptions.tableOptions, options);
+        tableOptions.url = (ctx + tableOptions.url).replace('//', '/');
         $(tableOptions.id).bootstrapTable({
-            url: ctx + tableOptions.url, //请求后台的URL（*）
+            url: tableOptions.url, //请求后台的URL（*）
             contentType: tableOptions.contentType, //用post请求，这个是必须条件，必须加上，get可以不用，亲测
             dataType: tableOptions.dataType,
             method: tableOptions.method, //请求方式（*）

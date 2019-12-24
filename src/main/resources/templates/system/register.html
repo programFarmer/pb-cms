@@ -101,7 +101,7 @@
                             offset:'30%',
                             time:800
                         }, function(){
-                            window.location.href = ctx + "/login";
+                            window.location.href = (ctx + "/login").replace('//', '/');
                         });
                     }else {
                         layer.msg(data.msg);
