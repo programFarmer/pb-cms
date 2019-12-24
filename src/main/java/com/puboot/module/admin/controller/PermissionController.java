@@ -107,7 +107,7 @@ public class PermissionController {
             return "redirect:/error/500";
         }
         model.addAttribute("permission", permission);
-        return "permission/detail";
+        return CoreConst.ADMIN_PREFIX + "permission/detail";
     }
 
     /*编辑权限*/

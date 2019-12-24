@@ -34,12 +34,12 @@
 
                 </li>
                 <li class="">
-                    <a href="/blog/comment" th:class="${categoryId=='comment' ? 'active' : ''} ">
+                    <a th:href="@{/blog/comment}" th:class="${categoryId=='comment' ? 'active' : ''} ">
                         留言板
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="alert('敬请期待')">
                         <i  class="fa fa-search search-btn"></i>
                     </a>
                 </li>

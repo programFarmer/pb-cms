@@ -13,6 +13,7 @@
 		<link rel="stylesheet" th:href="@{/libs/markdown/highlight.min.css}">
 		<link rel="stylesheet" th:href="@{/libs/theme/pblog/css/web-common.css}" />
 		<link rel="stylesheet" th:href="@{/libs/theme/pblog/css/web-blog.css}" />
+		<script th:inline="javascript">var ctx = [[@{/}]];</script>
 		<script th:src="@{/js/jquery.min.js}"></script>
 		<script th:src="@{/libs/bootstrap/bootstrap.min.js}"></script>
 		<script th:src="@{/libs/markdown/highlight.min.js}"></script>
@@ -42,8 +43,8 @@
 						<span class="thumbs-button fa fa-thumbs-up"> 点赞 <span id="loveCount" th:text="${article.loveCount}"></span></span>
 						<span class="reward-button fa fa-money"> 打赏
 						<p class="reward-content">
-							<span class="reward-img"><img src="/libs/theme/pblog/img/weixin.png"><br>微信赞赏</span>
-							<span class="reward-img"><img src="/libs/theme/pblog/img/zhifubao.png"><br>支付宝赞赏</span></p>
+							<span class="reward-img"><img th:src="@{/libs/theme/pblog/img/weixin.png}"><br>微信赞赏</span>
+							<span class="reward-img"><img th:src="@{/libs/theme/pblog/img/zhifubao.png}"><br>支付宝赞赏</span></p>
 						<span class="reward-bottom"></span>
 						<span class="reward-bottom-top"></span>
 						</span>

@@ -22,4 +22,6 @@ public class CoreConst {
     public static final String SHIRO_REDIS_SESSION_PREFIX = "pb_cms:session:";
     public static final String SHIRO_REDIS_CACHE_NAME = "shiro_pb_cms";
 
+    public static final String ADMIN_PREFIX = "admin/";
+
 }

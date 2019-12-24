@@ -68,7 +68,7 @@ public class CategoryController {
     public String edit(Model model, Integer id) {
         BizCategory bizCategory = categoryService.selectById(id);
         model.addAttribute("category", bizCategory);
-        return "category/detail";
+        return CoreConst.ADMIN_PREFIX + "category/detail";
     }
 
     @PostMapping("/edit")

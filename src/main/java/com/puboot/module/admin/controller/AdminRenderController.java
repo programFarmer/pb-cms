@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Map;
@@ -24,14 +25,23 @@ import java.util.Map;
 @AllArgsConstructor
 public class AdminRenderController {
 
+    
+
     private final BizCategoryService categoryService;
     private final SysConfigService sysConfigService;
 
+    /**
+     * 后台首页
+     */
+    @RequestMapping("/admin")
+    public String index() {
+        return CoreConst.ADMIN_PREFIX + "index/index";
+    }
 
     /*工作台*/
     @GetMapping("/workdest")
     public String workdest() {
-        return "index/workdest";
+        return CoreConst.ADMIN_PREFIX + "index/workdest";
     }
 
     /**
@@ -39,7 +49,7 @@ public class AdminRenderController {
      */
     @GetMapping("/users")
     public String userList() {
-        return "user/list";
+        return CoreConst.ADMIN_PREFIX + "user/list";
     }
 
     /**
@@ -47,7 +57,7 @@ public class AdminRenderController {
      */
     @GetMapping("/roles")
     public String roleList() {
-        return "role/list";
+        return CoreConst.ADMIN_PREFIX + "role/list";
     }
 
     /**
@@ -55,13 +65,13 @@ public class AdminRenderController {
      */
     @GetMapping("/permissions")
     public String permissionList() {
-        return "permission/list";
+        return CoreConst.ADMIN_PREFIX + "permission/list";
     }
 
     /*在线用户入口*/
     @GetMapping("/online/users")
     public String onlineUsers() {
-        return "onlineUsers/list";
+        return CoreConst.ADMIN_PREFIX + "onlineUsers/list";
     }
 
     /**
@@ -73,7 +83,7 @@ public class AdminRenderController {
     public String siteinfo(Model model) {
         Map<String, String> map = sysConfigService.selectAll();
         model.addAttribute("siteinfo", map);
-        return "site/siteinfo";
+        return CoreConst.ADMIN_PREFIX + "site/siteinfo";
     }
 
     /**
@@ -81,7 +91,7 @@ public class AdminRenderController {
      */
     @GetMapping("/links")
     public String links() {
-        return "link/list";
+        return CoreConst.ADMIN_PREFIX + "link/list";
     }
 
     /**
@@ -89,7 +99,7 @@ public class AdminRenderController {
      */
     @GetMapping("/categories")
     public String categories() {
-        return "category/list";
+        return CoreConst.ADMIN_PREFIX + "category/list";
     }
 
     /**
@@ -97,7 +107,7 @@ public class AdminRenderController {
      */
     @GetMapping("/tags")
     public String tags() {
-        return "tag/list";
+        return CoreConst.ADMIN_PREFIX + "tag/list";
     }
 
     /**
@@ -109,7 +119,7 @@ public class AdminRenderController {
     public String articles(Model model) {
         List<BizCategory> categories = categoryService.list(Wrappers.<BizCategory>lambdaQuery().eq(BizCategory::getStatus, CoreConst.STATUS_VALID));
         model.addAttribute("categories", categories);
-        return "article/list";
+        return CoreConst.ADMIN_PREFIX + "article/list";
     }
 
     /**
@@ -117,7 +127,7 @@ public class AdminRenderController {
      */
     @GetMapping("/comments")
     public String comments() {
-        return "comment/list";
+        return CoreConst.ADMIN_PREFIX + "comment/list";
     }
 
     /**
@@ -125,7 +135,7 @@ public class AdminRenderController {
      */
     @GetMapping("themes")
     public String themes() {
-        return "systheme/list";
+        return CoreConst.ADMIN_PREFIX + "systheme/list";
     }
 
 }

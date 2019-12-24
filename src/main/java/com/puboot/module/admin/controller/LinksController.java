@@ -1,6 +1,7 @@
 package com.puboot.module.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.puboot.common.util.CoreConst;
 import com.puboot.common.util.ResultUtil;
 import com.puboot.module.admin.model.BizLink;
 import com.puboot.module.admin.service.BizLinkService;
@@ -52,7 +53,7 @@ public class LinksController {
     public String edit(Model model, Integer id) {
         BizLink bizLink = linkService.getById(id);
         model.addAttribute("link", bizLink);
-        return "link/detail";
+        return CoreConst.ADMIN_PREFIX + "link/detail";
     }
 
     @PostMapping("/edit")

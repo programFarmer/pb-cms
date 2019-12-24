@@ -44,13 +44,6 @@ public class SystemController {
     private final SysConfigService configService;
 
 
-    /**
-     * 后台首页
-     */
-    @RequestMapping("/admin")
-    public String index() {
-        return "index/index";
-    }
 
     /* *//*注册*//*
     @GetMapping(value = "/register")

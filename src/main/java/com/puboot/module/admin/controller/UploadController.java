@@ -115,7 +115,7 @@ public class UploadController {
         String value = sysConfigService.selectAll().get(SysConfigKey.CLOUD_STORAGE_CONFIG.getValue());
         CloudStorageConfigVo cloudStorageConfig = JSON.parseObject(value, CloudStorageConfigVo.class);
         model.addAttribute("cloudStorageConfig", cloudStorageConfig);
-        return "upload/config";
+        return CoreConst.ADMIN_PREFIX + "upload/config";
     }
 
     @ResponseBody

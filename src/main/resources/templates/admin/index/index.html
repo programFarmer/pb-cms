@@ -50,8 +50,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed" onhashchange="loadContent()">
 <div class="wrapper">
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <div th:replace="admin/fragments/navbar :: navbar"></div>
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
     <div id="content" class="content-wrapper" >
     </div>
     <aside class="control-sidebar control-sidebar-dark">
@@ -63,7 +63,7 @@
         </div>
     </aside>
 </div>
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="admin/fragments/footer :: footer"></div>
 
 <script th:src="@{/libs/adminlte/js/app.js}"></script>
 <script th:src="@{/libs/adminlte/js/settings-skins.js}"></script>

@@ -58,7 +58,7 @@ public class ArticleController {
         List<BizTags> tags = tagsService.list();
         model.addAttribute("categories", JSON.toJSONString(bizCategories));
         model.addAttribute("tags", tags);
-        return "article/publish";
+        return CoreConst.ADMIN_PREFIX + "article/publish";
     }
 
     @PostMapping("/add")

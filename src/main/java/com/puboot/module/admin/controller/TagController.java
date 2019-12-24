@@ -1,6 +1,7 @@
 package com.puboot.module.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.puboot.common.util.CoreConst;
 import com.puboot.common.util.ResultUtil;
 import com.puboot.module.admin.model.BizTags;
 import com.puboot.module.admin.service.BizTagsService;
@@ -53,7 +54,7 @@ public class TagController {
     public String edit(Model model, Integer id) {
         BizTags bizTags = tagsService.getById(id);
         model.addAttribute("tag", bizTags);
-        return "tag/detail";
+        return CoreConst.ADMIN_PREFIX + "tag/detail";
     }
 
     @PostMapping("/edit")

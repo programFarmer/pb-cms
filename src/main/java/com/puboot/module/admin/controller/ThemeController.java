@@ -58,7 +58,7 @@ public class ThemeController {
     public String edit(Model model, Integer id) {
         BizTheme bizTheme = bizThemeService.getById(id);
         model.addAttribute("theme", bizTheme);
-        return "systheme/detail";
+        return CoreConst.ADMIN_PREFIX + "systheme/detail";
     }
 
     @PostMapping("/edit")

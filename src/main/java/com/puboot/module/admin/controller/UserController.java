@@ -87,7 +87,7 @@ public class UserController {
     public String userDetail(Model model, String userId) {
         User user = userService.selectByUserId(userId);
         model.addAttribute("user", user);
-        return "user/userDetail";
+        return CoreConst.ADMIN_PREFIX + "user/userDetail";
     }
 
     /**

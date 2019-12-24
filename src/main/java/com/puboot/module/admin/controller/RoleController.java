@@ -111,7 +111,7 @@ public class RoleController {
     public String detail(Model model, Integer id) {
         Role role = roleService.findById(id);
         model.addAttribute("role", role);
-        return "role/detail";
+        return CoreConst.ADMIN_PREFIX + "role/detail";
     }
 
     /*编辑角色*/
