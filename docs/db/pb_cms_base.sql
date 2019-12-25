@@ -563,30 +563,32 @@ COMMIT;
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(20) NOT NULL COMMENT '用户id',
-  `username` varchar(50) NOT NULL COMMENT '用户名',
-  `password` varchar(50) NOT NULL,
-  `salt` varchar(128) DEFAULT NULL COMMENT '加密盐值',
-  `nickname` varchar(50) DEFAULT NULL COMMENT '昵称',
-  `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
-  `phone` varchar(50) DEFAULT NULL COMMENT '联系方式',
-  `sex` int(255) DEFAULT NULL COMMENT '年龄：1男2女',
-  `age` int(3) DEFAULT NULL COMMENT '年龄',
-  `img` varchar(255) DEFAULT NULL COMMENT '头像地址',
-  `status` int(1) NOT NULL COMMENT '用户状态：1有效; 2删除',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `last_login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
-  PRIMARY KEY (`id`,`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+create table user
+(
+    user_id         varchar(20)  not null comment '用户id',
+    username        varchar(50)  not null comment '用户名',
+    password        varchar(50)  not null,
+    salt            varchar(128) null comment '加密盐值',
+    nickname        varchar(50)  null comment '昵称',
+    email           varchar(50)  null comment '邮箱',
+    phone           varchar(50)  null comment '联系方式',
+    sex             int(255)     null comment '年龄：1男2女',
+    age             int(3)       null comment '年龄',
+    img             varchar(255) null comment '头像地址',
+    status          int(1)       not null comment '用户状态：1有效; 2删除',
+    create_time     datetime     null comment '创建时间',
+    update_time     datetime     null comment '更新时间',
+    last_login_time datetime     null comment '最后登录时间',
+    constraint user_user_id_uindex
+        unique (user_id)
+)
+    charset = utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES (1, '1', 'admin', '56963f91d151bcec486202ddfe961e1b', '637e75dbf633ad6625afe45f7ccbcc7c', '码上无忧', '888@qq.com', '15666666666', 1, 22, 'http://img.puboot.com/ava.jpg', 1, '2018-05-23 21:22:06', '2018-07-17 23:04:46', '2019-09-17 23:20:04');
+INSERT INTO `user` VALUES ('1', 'admin', '56963f91d151bcec486202ddfe961e1b', '637e75dbf633ad6625afe45f7ccbcc7c', '码上无忧', '888@qq.com', '15666666666', 1, 22, 'http://img.puboot.com/ava.jpg', 1, '2018-05-23 21:22:06', '2018-07-17 23:04:46', '2019-09-17 23:20:04');
 COMMIT;
 
 -- ----------------------------
