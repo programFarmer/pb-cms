@@ -43,7 +43,7 @@ public class Pagination<T> extends Page<T> {
     @Override
     public Pagination<T> setTotal(long total) {
         super.setTotal(total);
-        pages = getPages();
+        pages = (total + getSize() - 1) / getSize();
         long current = getCurrent();
         isFirstPage = current == 1;
         isLastPage = current == pages || pages == 0;

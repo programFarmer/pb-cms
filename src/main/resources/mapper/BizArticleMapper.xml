@@ -73,7 +73,11 @@
 		love.loveCount AS love_count
 		FROM
 		biz_article a
-		INNER JOIN biz_article_tags atag ON a.id = atag.article_id
+		<if test="vo.tagId != null">
+			INNER JOIN (
+			select article_id, group_concat(tag_id) tag_ids from biz_article_tags where tag_id = #{vo.tagId} group by article_id
+			) atag on atag.article_id = a.id
+		</if>
 		INNER JOIN biz_category category ON a.category_id = category.id
 		LEFT JOIN (
 		SELECT
@@ -108,20 +112,6 @@
 		<if test="vo.categoryId != null">
 			AND	a.category_id = #{vo.categoryId}
 		</if>
-		<choose>
-			<when test="vo.tagIds != null">
-				AND atag.tag_id IN (
-				<foreach collection="vo.tagIds" item="tagId" separator=",">
-					#{tagId}
-				</foreach>
-				)
-			</when>
-			<otherwise>
-				<if test="vo.tagId != null">
-					AND	atag.tag_id = #{vo.tagId}
-				</if>
-			</otherwise>
-		</choose>
 		<if test="vo.top != null">
 			AND	a.top = #{vo.top}
 		</if>

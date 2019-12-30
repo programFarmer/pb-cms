@@ -37,7 +37,7 @@ $(function () {
     });
 
     function init(pageNumber) {
-        Core.postAjax("/blog/api/comments",{"sid":sid,"pageNumber": (pageNumber==null? 1 : pageNumber),"status":1},function (data) {
+        Core.postAjax("/blog/api/comments",{"sid":sid,"pageNumber": (pageNumber==null? 1 : pageNumber), "pageSize": 10, "status":1},function (data) {
             var commentOne="";
             if(data.total==0){
                 commentOne+='<div class="no-comment">暂无评论，快来占领宝座</div>';
