@@ -37,7 +37,7 @@
                     <input type="text"  name="verification"  class="form-control vcode-input" placeholder="验证码" require="必填项" data-position="position-a">
                     <span class="fa fa-key vcode-icon form-control-feedback"></span>
                 </div>
-                <img th:src="@{/verificationCode}" class="pointer vcode-img">
+                <img class="pointer vcode-img">
             </div>
             <div class="row">
                 <div class="col-xs-8">
@@ -140,6 +140,7 @@
             }
             new_scroll_position = last_scroll_position;
         });
+        $(".vcode-img").click();
 
     }
 </script>
