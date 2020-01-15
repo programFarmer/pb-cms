@@ -1,13 +1,13 @@
 $(function () {
     var pblogNickName=Core.getCookie("pb-cms-username");
-    var zblogQQ=Core.getCookie("pb-cms-qq");
-    var zblogEmail=Core.getCookie("pb-cms-email");
+    var pblogQQ=Core.getCookie("pb-cms-qq");
+    var pblogEmail=Core.getCookie("pb-cms-email");
     if(pblogNickName!=""){
         $("#user-name-content").show();
         $("#user-name").text(pblogNickName);
         $("#nickname").val(pblogNickName);
-        $("#qq").val(zblogQQ);
-        $("#email").val(zblogEmail);
+        $("#qq").val(pblogQQ);
+        $("#email").val(pblogEmail);
     }else{
         $("#user-info").show();
     }
@@ -114,10 +114,10 @@ $(function () {
                             '           <input id="reply-nickname" value="'+pblogNickName+'"  type="text" class="form-control" name="nickname" placeholder="昵称(必填)" />'+
                             '       </div>'+
                             '       <div class="col-sm-4">'+
-                            '           <input id="reply-qq" value="'+zblogQQ+'" type="text" class="form-control" name="qq" placeholder="QQ（可显示头像和昵称）" />'+
+                            '           <input id="reply-qq" value="'+pblogQQ+'" type="text" class="form-control" name="qq" placeholder="QQ（可显示头像和昵称）" />'+
                             '       </div>'+
                             '       <div class="col-sm-4">'+
-                            '           <input id="reply-email" value="'+zblogEmail+'" type="text" class="form-control" name="email" placeholder="邮箱" />'+
+                            '           <input id="reply-email" value="'+pblogEmail+'" type="text" class="form-control" name="email" placeholder="邮箱" />'+
                             '       </div>'+
                             '   </div>'+
                             '   <div class="form-group">'+
@@ -220,7 +220,7 @@ $(function () {
                 time: 800
             }, function () {
                 if(data.status==200){
-                    if(pblogNickName!=$("#nickname").val()||zblogQQ!=$("#qq").val()||zblogEmail!=$("#email").val()){
+                    if(pblogNickName!=$("#nickname").val()||pblogQQ!=$("#qq").val()||pblogEmail!=$("#email").val()){
                         Core.setCookie("pb-cms-username",$("#nickname").val(),30);
                         Core.setCookie("pb-cms-qq",$("#qq").val(),30);
                         Core.setCookie("pb-cms-email",$("#email").val(),30);
