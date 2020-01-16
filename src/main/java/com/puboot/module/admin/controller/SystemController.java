@@ -12,6 +12,7 @@ import com.puboot.module.admin.service.SysConfigService;
 import com.puboot.module.admin.service.UserService;
 import com.puboot.module.admin.vo.base.ResponseVo;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -34,6 +35,7 @@ import java.util.Map;
  * @version V1.0
  * @date 2019年9月11日
  */
+@Slf4j
 @Controller
 @AllArgsConstructor
 public class SystemController {
@@ -126,9 +128,10 @@ public class SystemController {
                             @RequestParam(value = "rememberMe", defaultValue = "0") Integer rememberMe) {
         //判断验证码
         String rightCode = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
-        if (StringUtils.isNotBlank(verification) && StringUtils.isNotBlank(rightCode) && verification.equals(rightCode)) {
+        if (StringUtils.isNoneBlank(verification, rightCode) && StringUtils.equalsIgnoreCase(verification, rightCode)) {
             //验证码通过
         } else {
+            log.error("验证码错误。session验证码:{}，收到验证码:{}", rightCode, verification);
             return ResultUtil.error("验证码错误！");
         }
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);

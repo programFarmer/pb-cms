@@ -88,7 +88,7 @@
             $(this).attr('src', (ctx + '/verificationCode?').replace('//', '/') + Math.floor(Math.random() * 100));
         });
         $("#loginBtn").on('click', function () {
-            if (!doValidForm(loginForm)) {
+            if (!doValidForm('#loginForm')) {
                 //没有通过验证
                 return;
             }
