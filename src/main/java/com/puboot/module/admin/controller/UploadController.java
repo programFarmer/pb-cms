@@ -32,7 +32,7 @@ import java.util.Map;
  */
 @Slf4j
 @Controller
-@RequestMapping("/upload")
+@RequestMapping("/attachment")
 @AllArgsConstructor
 public class UploadController {
 
@@ -79,11 +79,13 @@ public class UploadController {
     }
 
     @ResponseBody
-    @PostMapping("/upload2QiniuForMd")
-    public Object upload2QiniuForMd(@RequestParam("file") MultipartFile file) throws IOException {
+    @PostMapping("/upload2Qiniu")
+    public Object upload2QiniuForMd(@RequestParam("upload") MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {
             throw new UploadFileNotFoundException(UploadResponse.Error.FILENOTFOUND);
         }
+        Map<String, Object> resultMap = new HashMap<>(2);
+        resultMap.put("uploaded", false);
         try {
             String originalFilename = file.getOriginalFilename();
             String suffix = originalFilename.substring(originalFilename.lastIndexOf(".")).toLowerCase();
@@ -96,18 +98,14 @@ public class UploadController {
             String qiniuDomain = cloudStorageConfig.getQiniuDomain();
             String url = String.format("%1$s/%2$s", qiniuDomain, filePath);
             if (responseVo.getStatus().equals(CoreConst.SUCCESS_CODE)) {
-                Map<String, Object> resultMap = new HashMap<>(3);
-                resultMap.put("success", 1);
-                resultMap.put("message", "上传成功");
-                resultMap.put("filename", url);
+                resultMap.put("uploaded", true);
+                resultMap.put("url", url);
                 return resultMap;
-            } else {
-                return new UploadResponse(originalFilename, CoreConst.FAIL_CODE, responseVo.getMsg());
             }
         } catch (Exception e) {
             log.error(String.format("UploadController.upload%s", e));
-            throw e;
         }
+        return resultMap;
     }
 
     @GetMapping("/config")

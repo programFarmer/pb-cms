@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group form-editor">
                         <div class="col-xs-12">
-                            <textarea id="articleField" th:text="${article.contentMd}"></textarea>
+                            <textarea id="articleField" th:text="${article.content}"></textarea>
                         </div>
                     </div>
                 </div>
@@ -164,6 +164,25 @@
         </div>
     </div>
 </section>
+
+<script>
+    var myEditor;
+    ClassicEditor
+        .create(document.querySelector("#articleField"), {
+            language: {
+                ui: 'zh-cn'
+            },
+            ckfinder: {
+                uploadUrl: '[[@{/attachment/upload2Qiniu}]]'
+            }
+        })
+        .then(editor => {
+            myEditor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 <script>
     /*去tm的thymeleaf，只能祭出jq了？*/
     var categories = "[[${categories}]]";
@@ -220,39 +239,13 @@
         checkboxClass: 'icheckbox_minimal-blue',
         radioClass: 'iradio_minimal-blue',
     });
-    var detailSimplemde = new SimpleMDE({
-        // textarea的DOM对象
-        element: document.getElementById("articleField"),
-        // 自动下载FontAwesome，设为false为不下载(如果设为false则必须手动引入)
-        autoDownloadFontAwesome: false,
-        placeholder: "请输入文章内容",
-        /*autosave: {
-            // 启用自动保存功能
-            enabled: true,
-            // 自动保存的间隔，以毫秒为单位。默认为10000（10s）
-            delay: 15000,
-            // 唯一的字符串标识符(保证每个SimpleMDE编辑器的uniqueId唯一)
-            uniqueId: "editor-2"
-        },*/
-        renderingConfig: {
-            // 如果设置为true，将使用highlight.js高亮显示。默认为false
-            codeSyntaxHighlighting: true
-        },
-        showIcons: ["code", "table", "clean-block", "horizontal-rule"],
-        tabSize: 4,
-        // 编辑器底部的状态栏
-        status: true,
-        status: [ "lines", "words"] // Optional usage
-    });
+
 
     function  saveArticle(status) {
         if(validArticle()){
             Core.confirm("确认保存文章？",function () {
                 $("#status").val(status);
                 Core.postAjax("/article/edit",$("#articleForm").serialize(),function (data) {
-                    if(data.status=200){
-                        detailSimplemde.clearAutosavedValue();
-                    }
                     layer.msg(data.msg)
                 })
             })
@@ -261,10 +254,10 @@
 
     function  validArticle() {
         if(doValidForm(articleForm)){
-            var contentMd=detailSimplemde.value();
-            if(contentMd!=""){
-                $("#articleContentMd").val(contentMd);
-                $("#articleContent").val(detailSimplemde.markdown(contentMd));
+            var content = myEditor.getData();
+            if(content){
+                $("#articleContentMd").val(content);
+                $("#articleContent").val(content);
                 var tags =[];
                 $('input[name="tag"]:checked').each(function(){
                     tags.push($(this).val());
@@ -297,7 +290,7 @@
                     '</div>'
                 $("#upload-content").append(imgHtml);
                 $(".imgUploader").upload({
-                    server : '[[@{/upload/upload}]]',
+                    server : '[[@{/attachment/upload}]]',
                     swf: 'http://p2blsey2s.bkt.clouddn.com/statics/upload/js/Uploader.swf',
                     imgAccept:true
                 }, function(url, picker) {
@@ -321,7 +314,7 @@
                     '</div>'
                 $("#upload-content").append(imgHtml);
                 $(".sliderUploader").upload({
-                    server : '[[@{/upload/upload}]]',
+                    server : '[[@{/attachment/upload}]]',
                     swf: '/img/Uploader.swf',
                     imgAccept:true
                 }, function(url, picker) {

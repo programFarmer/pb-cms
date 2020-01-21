@@ -521,3 +521,6 @@ thead .pb-radio input[type="radio"]:checked + label:after {
 .jax-box-table .treegrid-selected{
     background-color: #f2f8ff!important;
 }
+.ck-editor__editable {
+    min-height: 800px;
+}
