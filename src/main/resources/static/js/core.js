@@ -137,25 +137,25 @@ var Core = (function () {
         });
     };
     /*load()*/
-    core.load = function (id, url, d, t) {
+    core.load = function (id, url, d) {
         url = (ctx + url).replace('//', '/');
         $(id).html("");
-        $(id).load(url, function (response, status, XMLHttpRequest) {
-            if (typeof d == "function" && status == "success") {
+        $(id).load(url, function (response, status, xhr) {
+            if (typeof d == "function" && status === "success") {
                 d();
             }
-            if (status == "error") {
-                if (t == undefined || t == 1) {
+            switch (xhr.status) {
+                case 200:
                     $("#content").html(response);
-                } else if (t = 2) {
-                    if (XMLHttpRequest.status == 403) {
-                        layer.msg("您没有权限访问！")
-                    } else if (XMLHttpRequest.status == 500) {
-                        layer.msg("服务器内部错误！")
-                    } else {
-                        layer.msg("服务器未知错误！")
-                    }
-                }
+                    break;
+                case 403:
+                    layer.msg("您没有权限访问！");
+                    break;
+                case 404:
+                    layer.msg("对应的页面不存在！");
+                    break;
+                default:
+                    layer.msg("服务器未知错误！");
             }
         })
     }
