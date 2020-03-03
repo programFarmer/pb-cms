@@ -146,7 +146,7 @@ var Core = (function () {
             }
             switch (xhr.status) {
                 case 200:
-                    $("#content").html(response);
+                    $(id).html(response);
                     break;
                 case 403:
                     layer.msg("您没有权限访问！");
