@@ -45,12 +45,12 @@
     </select>
 
     <select id="findByRoleId" resultMap="BaseResultMap">
-        SELECT a.id, a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
+        SELECT a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
         a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.user_id = b.user_id WHERE b.role_id = #{roleId,jdbcType=VARCHAR}
     </select>
 
     <select id="findByRoleIds" resultMap="BaseResultMap">
-        SELECT a.id, a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
+        SELECT a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
         a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.user_id = b.user_id
         WHERE b.role_id IN
         <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
