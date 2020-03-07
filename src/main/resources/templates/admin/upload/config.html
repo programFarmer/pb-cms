@@ -70,7 +70,7 @@
         $("#saveConfig").on('click', function () {
             Core.mask("#saveConfig");
             if(doValidForm(cloudConfigForm)){
-                Core.postAjax("/upload/saveConfig",$("#cloudConfigForm").serialize(),function (data) {
+                Core.postAjax("/attachment/saveConfig",$("#cloudConfigForm").serialize(),function (data) {
                     Core.unmask("#saveConfig");
                     layer.msg(data.msg);
                 })

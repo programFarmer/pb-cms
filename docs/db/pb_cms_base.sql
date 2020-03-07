@@ -403,8 +403,8 @@ INSERT INTO `permission` VALUES (75, '1000000322655547', '回复', '回复评论
 INSERT INTO `permission` VALUES (76, '1000001419287014', '删除', '删除评论', '/comment/delete', 'comment:delete', 72, 2, 0, '', 1, '2018-08-10 10:06:27', '2018-08-10 10:06:27');
 INSERT INTO `permission` VALUES (77, '1000002075182223', '批量删除', '批量删除评论', '/comment/batch/delete', 'comment:batchDelete', 72, 2, 0, '', 1, '2018-08-10 10:07:57', '2018-08-10 10:07:57');
 INSERT INTO `permission` VALUES (78, '1000000587822241', '上传管理', '上传管理', '', '', 0, 0, 6, 'fa fa-th-list', 1, '2018-09-12 17:08:41', '2018-09-12 17:08:41');
-INSERT INTO `permission` VALUES (79, '1000000493635111', '云存储配置', '云存储配置', '/upload/config', 'upload:config', 78, 1, 1, 'fa fa-circle-o', 1, '2018-09-12 17:10:09', '2018-09-12 17:10:09');
-INSERT INTO `permission` VALUES (80, '1000000318760332', '保存', '保存云存储配置', '/upload/saveConfig', 'upload:saveConfig', 79, 2, 0, '', 1, '2018-09-12 17:10:42', '2018-09-12 17:10:42');
+INSERT INTO `permission` VALUES (79, '1000000493635111', '云存储配置', '云存储配置', '/attachment/config', 'upload:config', 78, 1, 1, 'fa fa-circle-o', 1, '2018-09-12 17:10:09', '2018-09-12 17:10:09');
+INSERT INTO `permission` VALUES (80, '1000000318760332', '保存', '保存云存储配置', '/attachment/saveConfig', 'upload:saveConfig', 79, 2, 0, '', 1, '2018-09-12 17:10:42', '2018-09-12 17:10:42');
 INSERT INTO `permission` VALUES (81, '1000000919723998', '主题管理', '主题管理', '/themes', 'themes', 35, 1, 2, 'fa fa-circle-o', 1, '2018-09-19 15:43:50', '2018-09-19 15:43:50');
 INSERT INTO `permission` VALUES (82, '1000000784272506', '查询', '主题列表', '/theme/list', 'theme:list', 81, 2, 0, '', 1, '2018-09-19 15:44:50', '2018-09-19 15:44:50');
 INSERT INTO `permission` VALUES (83, '1000000215201942', '新增', '新增主题', '/theme/add', 'theme:add', 81, 2, 0, '', 1, '2018-09-19 15:45:34', '2018-09-19 15:45:34');
