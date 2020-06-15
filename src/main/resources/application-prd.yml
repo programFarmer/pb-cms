@@ -2,13 +2,13 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pb_cms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
-    username: pb
-    password: 123456
+    url: jdbc:mysql://localhost:3306/pb_cms_base?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: Phenix@327
   redis:
     host: localhost
     port: 6379
-    password: 1234QWER!@#$.
+    password: Phenix@327
     timeout: 5000
     jedis:
       pool:

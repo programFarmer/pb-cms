@@ -2,13 +2,13 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pb-cms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://122.51.92.144:3306/pb_cms_base?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     username: root
-    password: 123456
+    password: Phenix@327
   redis:
-    host: localhost
+    host: 122.51.92.144
     port: 6379
-    password:
+    password: Phenix@327
     timeout: 5000
     jedis:
       pool:
@@ -18,4 +18,4 @@ spring:
         max-wait: -1
 server:
   servlet:
-    context-path: /cms
+    context-path: /
